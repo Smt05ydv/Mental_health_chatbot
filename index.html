@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CalmMind – Mental Health Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-icon">C</div>
+          <div class="brand-text">
+            <span>CalmMind</span>
+            <span>AI Mental Health Companion</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section-label">Main</div>
+        <nav class="nav">
+          <button class="nav-btn active" data-screen="chat">
+            <span class="icon">💬</span>
+            <div>
+              <span class="label-top">Chat</span>
+              <span class="label-bottom">Talk to your companion</span>
+            </div>
+          </button>
+
+          <button class="nav-btn" data-screen="history">
+            <span class="icon">📂</span>
+            <div>
+              <span class="label-top">Chat History</span>
+              <span class="label-bottom">Previous sessions</span>
+            </div>
+          </button>
+
+          <button class="nav-btn" data-screen="notes">
+            <span class="icon">📝</span>
+            <div>
+              <span class="label-top">Personal Notes</span>
+              <span class="label-bottom">Private journal</span>
+            </div>
+          </button>
+        </nav>
+
+        <div class="sidebar-section-label">Well-being</div>
+        <nav class="nav">
+          <button class="nav-btn" data-screen="breathing">
+            <span class="icon">🌿</span>
+            <div>
+              <span class="label-top">Breathing</span>
+              <span class="label-bottom">Guided 4-7-8</span>
+            </div>
+          </button>
+
+          <button class="nav-btn" data-screen="assessment">
+            <span class="icon">📊</span>
+            <div>
+              <span class="label-top">Self-Assessment</span>
+              <span class="label-bottom">Daily mood check-in</span>
+            </div>
+          </button>
+
+          <button class="nav-btn" data-screen="profile">
+            <span class="icon">👤</span>
+            <div>
+              <span class="label-top">Profile</span>
+              <span class="label-bottom">Goals & preferences</span>
+            </div>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="pill">
+          <strong>Reminder:</strong> This is not a replacement for a licensed
+          therapist.
+        </div>
+
+        <div class="toggles-row">
+          <span class="toggle-label">Dark mode</span>
+          <label class="switch">
+            <input type="checkbox" id="themeToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="support-card">
+          <div><strong>Need urgent help?</strong></div>
+          <div>In crisis, please contact your local emergency number.</div>
+          <button type="button">
+            <span class="icon">📞</span>
+            Call a psychiatrist (demo)
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- Top bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <h1>Welcome back, Sumit 👋</h1>
+          <p>
+            Track your mood, talk safely, and use calming tools when you feel
+            overwhelmed.
+          </p>
+        </div>
+        <div class="topbar-right">
+          <button class="google-btn">
+            <div class="google-logo"></div>
+            <span>Continue with Google</span>
+          </button>
+          <div class="user-pill">
+            <div class="user-pill-avatar">S</div>
+            <span>3-day streak · Self-care mode</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screens -->
+      <div class="main-grid">
+        <!-- LEFT: main dynamic screens -->
+        <div class="panel">
+          <div class="panel-header">
+            <span>Screen</span>
+            <span class="chip online-dot">
+              <span class="chip-dot"></span> Therapist-style bot online
+            </span>
+          </div>
+
+          <!-- CHAT SCREEN -->
+          <div class="screen active" id="screen-chat">
+            <div class="chat-window">
+              <div>
+                <div class="messages">
+                  <div class="msg bot">
+                    <div class="msg-avatar">AI</div>
+                    <div class="msg-bubble">
+                      Hey Sumit, how are you feeling right now? You can use the
+                      mood selector on the right if it’s hard to describe.
+                    </div>
+                  </div>
+
+                  <div class="msg user">
+                    <div class="msg-bubble">
+                      A bit anxious about my exams and future.
+                    </div>
+                  </div>
+
+                  <div class="msg bot">
+                    <div class="msg-avatar">AI</div>
+                    <div class="msg-bubble">
+                      That sounds heavy. Let’s break it into smaller parts.
+                      What worries you more: performance in exams or what comes
+                      after college?
+                    </div>
+                  </div>
+
+                  <div class="msg meta">
+                    <span>Mood auto-tagged as <strong>Stressed</strong></span>
+                  </div>
+                </div>
+
+                <div class="chat-input">
+                  <div class="chat-input-box">
+                    <input
+                      placeholder="Type a message… or say 'guide me through a quick breathing exercise'"
+                    />
+                    <span class="chip-pill">+ Add mood note</span>
+                  </div>
+                  <button class="send-btn">
+                    Send
+                    <span class="arrow">➤</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="chat-side">
+                <div>
+                  <div class="section-title">Mood selector</div>
+                  <div class="mood-row">
+                    <button class="mood-chip active">
+                      <span class="icon">😰</span> Stressed
+                    </button>
+                    <button class="mood-chip">
+                      <span class="icon">🙂</span> Okay
+                    </button>
+                    <button class="mood-chip">
+                      <span class="icon">😔</span> Low
+                    </button>
+                    <button class="mood-chip">
+                      <span class="icon">😡</span> Angry
+                    </button>
+                    <button class="mood-chip">
+                      <span class="icon">😴</span> Tired
+                    </button>
+                    <button class="mood-chip">
+                      <span class="icon">🤩</span> Excited
+                    </button>
+                  </div>
+                </div>
+
+                <div class="micro-card">
+                  <div class="section-title">Quick tools</div>
+                  <div>Pick one and I’ll adjust my replies:</div>
+                  <button type="button">I just want to vent</button>
+                  <button type="button">I need a plan / steps</button>
+                  <button type="button">Teach me a coping skill</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HISTORY SCREEN -->
+          <div class="screen" id="screen-history">
+            <div class="panel-header">
+              <span>Chat history</span>
+              <span class="chip">Last 7 days</span>
+            </div>
+            <div class="history-list">
+              <div class="history-item">
+                <div class="history-meta">
+                  <span class="title">Exam stress before CS paper</span>
+                  <span class="time">Today · Mood: Stressed</span>
+                </div>
+                <span class="history-badge">12 messages</span>
+              </div>
+
+              <div class="history-item">
+                <div class="history-meta">
+                  <span class="title">Sleep routine & late-night scrolling</span>
+                  <span class="time">Yesterday · Mood: Tired</span>
+                </div>
+                <span class="history-badge">18 messages</span>
+              </div>
+
+              <div class="history-item">
+                <div class="history-meta">
+                  <span class="title">Feeling good after walk</span>
+                  <span class="time">2 days ago · Mood: Calm</span>
+                </div>
+                <span class="history-badge">8 messages</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTES SCREEN -->
+          <div class="screen" id="screen-notes">
+            <div class="panel-header">
+              <span>Personal notes (private to you)</span>
+              <span class="chip">Autosaves locally · Draft</span>
+            </div>
+            <div class="notes-area">
+              <div class="notes-header-row">
+                <span>Journal entry</span>
+                <div class="notes-tags">
+                  <span>#exams</span>
+                  <span>#sleep</span>
+                  <span>#confidence</span>
+                </div>
+              </div>
+              <textarea placeholder="Write freely here. You can also paste thoughts from the chat…">
+Today I realised that when I actually sleep enough and stretch, my anxiety drops a lot. Still scared about results, but at least my mind feels more clear.</textarea>
+              <div class="notes-footer">
+                <span>Last edited · just now</span>
+                <button type="button">Save note</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BREATHING SCREEN -->
+          <div class="screen" id="screen-breathing">
+            <div class="panel-header">
+              <span>Breathing exercise</span>
+              <span class="chip">4-7-8 pattern · ~1 min</span>
+            </div>
+            <div class="breath-layout">
+              <div class="breath-visual">
+                <div class="breath-circle">Breathe</div>
+              </div>
+              <div class="breath-steps">
+                <strong>Follow along:</strong>
+                <span>1. Inhale gently for 4 seconds</span>
+                <span>2. Hold your breath for 7 seconds</span>
+                <span>3. Exhale slowly for 8 seconds</span>
+                <span>Repeat for 4 cycles. Try to just notice your thoughts, not fight them.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SELF-ASSESSMENT SCREEN -->
+          <div class="screen" id="screen-assessment">
+            <div class="panel-header">
+              <span>Daily self-assessment</span>
+              <span class="chip">Check-in takes ~30 sec</span>
+            </div>
+            <form class="assessment-form">
+              <div class="field">
+                <label>Overall mood right now</label>
+                <div class="scale-row">
+                  <span class="scale-pill">1 · Really bad</span>
+                  <span class="scale-pill">2</span>
+                  <span class="scale-pill active">3 · Meh</span>
+                  <span class="scale-pill">4</span>
+                  <span class="scale-pill">5 · Feeling good</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Anxiety level</label>
+                <div class="scale-row">
+                  <span class="scale-pill active">Low</span>
+                  <span class="scale-pill">Medium</span>
+                  <span class="scale-pill">High</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Sleep quality last night</label>
+                <div class="scale-row">
+                  <span class="scale-pill">Very poor</span>
+                  <span class="scale-pill active">Okay</span>
+                  <span class="scale-pill">Great</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Anything important that happened today?</label>
+                <textarea
+                  rows="2"
+                  style="
+                    border-radius: 10px;
+                    border: 0;
+                    outline: 0;
+                    padding: 6px;
+                    background: rgba(15, 23, 42, 0.95);
+                    color: #e5e7eb;
+                    font-size: 12px;
+                    resize: none;
+                  "
+                  placeholder="Example: Completed DSA practice, argued with friend, got internship mail, etc."
+                ></textarea>
+              </div>
+
+              <div class="assessment-footer">
+                <span>Your answers help the bot adapt your future sessions.</span>
+                <button type="button">Save check-in</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- PROFILE SCREEN -->
+          <div class="screen" id="screen-profile">
+            <div class="panel-header">
+              <span>Your profile</span>
+              <span class="chip">Student · Self-growth mode</span>
+            </div>
+
+            <div class="profile-box">
+              <div class="profile-avatar">S</div>
+              <div class="profile-main">
+                <span class="name">Sumit</span>
+                <span class="tagline">
+                  College student · Wants a calm, disciplined life and a job in
+                  Japan.
+                </span>
+
+                <div class="profile-tags">
+                  <span>#exams</span>
+                  <span>#nightschedule</span>
+                  <span>#dsa </span>
+                  <span>#editing</span>
+                </div>
+
+                <div class="profile-meta-row">
+                  <span class="meta-pill">
+                    <span class="dot"></span> Weekly summary enabled
+                  </span>
+                  <button type="button">Edit goals</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT STACK: HISTORY PREVIEW + NOTES + BREATH + ASSESS SUMMARY -->
+        <div class="right-stack">
+          <!-- MINI HISTORY PREVIEW (even when in chat) -->
+          <div class="panel">
+            <div class="panel-header">
+              <span>Recent sessions</span>
+              <span class="chip">Mood trend</span>
+            </div>
+            <div class="history-list">
+              <div class="history-item">
+                <div class="history-meta">
+                  <span class="title">"I feel stuck with DSA"</span>
+                  <span class="time">3 hrs ago</span>
+                </div>
+                <span class="history-badge">Stressed</span>
+              </div>
+              <div class="history-item">
+                <div class="history-meta">
+                  <span class="title">"Better day after walk"</span>
+                  <span class="time">Yesterday</span>
+                </div>
+                <span class="history-badge">Calm</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MINI NOTES + BREATH + ASSESS SUMMARY -->
+          <div class="panel">
+            <div class="panel-header">
+              <span>Today’s toolkit</span>
+              <span class="chip">Shortcuts</span>
+            </div>
+
+            <div class="notes-area">
+              <div class="notes-header-row">
+                <span>1-line reflection</span>
+              </div>
+              <textarea>Even if I'm anxious, I can still take action in small steps.</textarea>
+              <div class="notes-footer">
+                <span>Tap to edit</span>
+                <button type="button">Send to chat</button>
+              </div>
+            </div>
+
+            <div class="breath-layout" style="margin-top: 8px">
+              <div class="breath-visual">
+                <div class="breath-circle" style="width: 54px; height: 54px">
+                  Calm
+                </div>
+              </div>
+              <div class="breath-steps">
+                <strong>1-tap breathing</strong>
+                <span>Use this before starting a big task.</span>
+              </div>
+            </div>
+
+            <div class="assessment-footer" style="margin-top: 8px">
+              <span>Last self-assessment: Today · Mood = 3/5</span>
+              <button type="button">Update now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
